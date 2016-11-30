@@ -1,0 +1,60 @@
+body {
+  background-image: url(../images/star-stock.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'distant_galaxyregular';
+}
+
+h1.page-heading {
+  color: #d2d8e0;
+  font-size: 4.5em;
+  text-align: center;
+}
+
+div.board-container {
+  padding-top: 50px;
+  padding-left: 50px;
+  width: 350px;
+  display: inline-block;
+}
+
+div.board-box {
+  border-style: solid;
+  border-color: black;
+  height: 100px;
+  width: 100px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+div.imperial {
+  background: url(../images/imperial-reverse.jpg);
+  background-size: 90px, 90px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+div.alliance {
+  background: url(../images/first-order.png);
+  background-size: 94px, 94px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+div.result-area {
+  padding-top: 125px;
+  display: inline-block;
+  width: 425px;
+  text-align: center;
+
+}
+
+.result-area h2 {
+  font-size: 3em;
+  color: #d2d8e0;
+}
+
+.result-area h3 {
+  font-size: 2em;
+  color: #d8cd00;
+  cursor: pointer;
+}
