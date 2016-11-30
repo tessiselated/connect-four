@@ -1,13 +1,10 @@
-// function to create a board
-// Board needs to have three divs with class row and board-row, row needs to contain three divs with class
-// col-md-4 and board-box
+
 
 
 var boardDOMElement = document.getElementById("board");
 var resultDOMElement = document.getElementById("winner-text");
 var resetDOMElement = document.getElementById("reset-game");
 
-var audio = new Audio('nooo.mp3');
 
 
 
@@ -22,10 +19,10 @@ function createBoard() {
     clickerCount = 0;
     gameState = true;
     gameWinner = undefined;
-    for (i = 0; i < 3; i++) {
+    for (i = 0; i < 6; i++) {
         var boardRow = document.createElement("div");
         boardRow.classList.add("row");
-        for (j = 0; j < 3; j++) {
+        for (j = 0; j < 7; j++) {
             var boardBox = document.createElement("div");
             boardBox.classList.add("col-md-4", "board-box", "empty");
             boardBox.id = (i + 1) + "" + (j + 1);
@@ -76,7 +73,6 @@ boardDOMElement.addEventListener("click", function() {
         }
         if (gameState === false) {
             gameWinner = "Alliance";
-            audio.play();
         }
     }
 
