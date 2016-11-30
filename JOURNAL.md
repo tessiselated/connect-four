@@ -3,3 +3,6 @@
 - Adjust tic-tac-toe logic to work on connect four
   - Challenges:
     - Which elements are playable
+    - Will need to rethink draw condition
+
+    

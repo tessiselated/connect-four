@@ -24,16 +24,28 @@ function createBoard() {
         boardRow.classList.add("row");
         for (j = 0; j < 7; j++) {
             var boardBox = document.createElement("div");
-            boardBox.classList.add("col-md-4", "board-box", "empty");
+            boardBox.classList.add("col-md-4", "board-box");
             boardBox.id = (i + 1) + "" + (j + 1);
             boardRow.appendChild(boardBox);
 
         }
         boardDOMElement.appendChild(boardRow);
+
+
+
     }
+    startBottomRow("61 62 63 64 65 66 67");
 }
 
 createBoard();
+
+function startBottomRow(ids) {
+    var idList = ids.split(" ");
+    for (var i = 0; i < idList.length; i++) {
+        var bottomBlock = document.getElementById(idList[i]);
+        bottomBlock.classList.add("empty");
+}
+}
 
 // Create an event listener that changes the class of the box on click
 // Click event should change class of box clicked on - but only if class is empty
@@ -41,7 +53,7 @@ createBoard();
 var clickerCount = 0;
 var gameState = true;
 var gameWinner;
-var winSize = 3;
+var winSize = 4;
 
 boardDOMElement.addEventListener("click", function() {
     var allianceCombos = [];
@@ -58,9 +70,7 @@ boardDOMElement.addEventListener("click", function() {
         if (gameState === false) {
             gameWinner = "Imperials";
         }
-        if (clickerCount === 9) {
-            gameState = false;
-        }
+
 
     } else if (event.target.classList.contains("empty") && (clickerCount % 2 !== 0) && gameState === true) {
         event.target.classList.add("alliance", "in-play");
