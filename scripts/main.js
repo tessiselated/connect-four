@@ -62,6 +62,7 @@ boardDOMElement.addEventListener("click", function() {
         event.target.classList.add("imperial", "in-play");
         event.target.classList.remove("empty");
         clickerCount++;
+        stackPlay(event.target.id);
         generateOwnedArrays();
         if (imperialIds.length >= winSize) {
             getCombinations(imperialIds, winSize, 0, [], imperialCombos);
@@ -76,6 +77,7 @@ boardDOMElement.addEventListener("click", function() {
         event.target.classList.add("alliance", "in-play");
         event.target.classList.remove("empty");
         clickerCount++;
+        stackPlay(event.target.id);
         generateOwnedArrays();
         if (allianceIds.length >= winSize) {
             getCombinations(allianceIds, winSize, 0, [], allianceCombos);
@@ -90,6 +92,14 @@ boardDOMElement.addEventListener("click", function() {
         printWinner();
     }
 });
+
+
+function stackPlay(id) {
+    var boxAbove = parseInt(id) - 10;
+    if (boxAbove > 10) {
+        document.getElementById(boxAbove).classList.add("empty");
+    }
+}
 
 
 
