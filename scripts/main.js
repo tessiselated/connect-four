@@ -28,7 +28,7 @@ function createBoard() {
         for (j = 0; j < columns; j++) {
             var boardBox = document.createElement("div");
             boardBox.classList.add("col-md-4", "board-box");
-            boardBox.id = (i + 1) + "" + (j + 1);
+            boardBox.id = (i + 1) + "" + (j);
             boardRow.appendChild(boardBox);
 
         }
@@ -45,7 +45,7 @@ createBoard();
 
 
 function startBottomRow() {
-    for (i=1; i <= columns; i++) {
+    for (i=0; i < columns; i++) {
         var bottomBlock = rows.toString() + i.toString();
         document.getElementById(bottomBlock).classList.add("empty");
 
@@ -105,7 +105,7 @@ boardDOMElement.addEventListener("click", function() {
 
 function stackPlay(id) {
     var boxAbove = parseInt(id) - 10;
-    if (boxAbove > 10) {
+    if (boxAbove >= 10) {
         document.getElementById(boxAbove).classList.add("empty");
     }
 }
