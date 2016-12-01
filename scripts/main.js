@@ -86,6 +86,9 @@ boardDOMElement.addEventListener("click", function() {
         if (gameState === false) {
             gameWinner = "Alliance";
         }
+        if (clickerCount === 42) {
+            gameState = false;
+        }
     }
 
     if (gameState === false) {
