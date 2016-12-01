@@ -12,37 +12,34 @@ h1.page-heading {
 }
 
 div.board-container {
-  padding-top: 50px;
-  padding-left: 50px;
+  padding: 40px 0px 40px 50px;
   display: inline-block;
 }
 
 div.board-box {
   border-style: solid;
   border-color: black;
-  height: 100px;
-  width: 100px;
+  border-width: thin;
+  height: 90px;
+  width: 90px;
   background: rgba(255, 255, 255, 0.5);
 }
 
 div.imperial {
   background: url(../images/imperial-reverse.jpg);
-  background-size: 90px, 90px;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-size: contain;
+
 }
 
 div.alliance {
   background: url(../images/first-order.png);
-  background-size: 94px, 94px;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 div.result-area {
   padding-top: 125px;
   display: inline-block;
-  width: 425px;
+  width: 400px;
   text-align: center;
 
 }
