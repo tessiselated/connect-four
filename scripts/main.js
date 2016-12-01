@@ -14,6 +14,11 @@ var imperialIds = [];
 var rows = 6;
 var columns = 7;
 
+var clickerCount = 0;
+var gameState = true;
+var gameWinner;
+var winSize = 4;
+
 
 function createBoard() {
     boardDOMElement.innerHTML = "";
@@ -56,41 +61,40 @@ function startBottomRow() {
 // Create an event listener that changes the class of the box on click
 // Click event should change class of box clicked on - but only if class is empty
 
-var clickerCount = 0;
-var gameState = true;
-var gameWinner;
-var winSize = 4;
+
 
 boardDOMElement.addEventListener("click", function() {
     var allianceCombos = [];
     var imperialCombos = [];
-    if (event.target.classList.contains("empty") && (clickerCount % 2 === 0) && gameState === true) {
-        event.target.classList.add("imperial", "in-play");
-        event.target.classList.remove("empty");
-        clickerCount++;
-        stackPlay(event.target.id);
+    if ((clickerCount % 2 === 0) && gameState === true) {
+        turnStructure("imperial");
+        // event.target.classList.add("imperial", "in-play");
+        // event.target.classList.remove("empty");
+        // clickerCount++;
+        // stackPlay(event.target.id);
         generateOwnedArrays();
         if (imperialIds.length >= winSize) {
             getCombinations(imperialIds, winSize, 0, [], imperialCombos);
             checkWin(imperialCombos);
         }
         if (gameState === false) {
-            gameWinner = "Imperials";
+            gameWinner = "Imperials *";
         }
 
 
-    } else if (event.target.classList.contains("empty") && (clickerCount % 2 !== 0) && gameState === true) {
-        event.target.classList.add("alliance", "in-play");
-        event.target.classList.remove("empty");
-        clickerCount++;
-        stackPlay(event.target.id);
+    } else if ((clickerCount % 2 !== 0) && gameState === true) {
+        // event.target.classList.add("alliance", "in-play");
+        // event.target.classList.remove("empty");
+        // clickerCount++;
+        // stackPlay(event.target.id);
+        turnStructure("alliance")
         generateOwnedArrays();
         if (allianceIds.length >= winSize) {
             getCombinations(allianceIds, winSize, 0, [], allianceCombos);
             checkWin(allianceCombos);
         }
         if (gameState === false) {
-            gameWinner = "Alliance";
+            gameWinner = "Alliance @";
         }
         if (clickerCount === (rows*columns)) {
             gameState = false;
@@ -101,6 +105,26 @@ boardDOMElement.addEventListener("click", function() {
         printWinner();
     }
 });
+
+function turnStructure(player) {
+    var clickedBox = event.target;
+    var clickedId = parseInt(event.target.id);
+    for (i=1; i <= rows; i++) {
+        if (clickedBox.classList.contains("empty")) {
+            clickedBox.classList.add(player, "in-play");
+            clickedBox.classList.remove("empty");
+            break;
+        }
+        else {
+            clickedId = clickedId + 10;
+            clickedBox = document.getElementById(clickedId)
+        }
+    }
+    clickerCount++;
+    stackPlay(clickedId);
+
+
+}
 
 
 function stackPlay(id) {
