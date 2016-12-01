@@ -11,6 +11,9 @@ var resetDOMElement = document.getElementById("reset-game");
 var allianceIds = [];
 var imperialIds = [];
 
+var rows = 6;
+var columns = 7;
+
 
 function createBoard() {
     boardDOMElement.innerHTML = "";
@@ -19,10 +22,10 @@ function createBoard() {
     clickerCount = 0;
     gameState = true;
     gameWinner = undefined;
-    for (i = 0; i < 6; i++) {
+    for (i = 0; i < rows; i++) {
         var boardRow = document.createElement("div");
         boardRow.classList.add("row");
-        for (j = 0; j < 7; j++) {
+        for (j = 0; j < columns; j++) {
             var boardBox = document.createElement("div");
             boardBox.classList.add("col-md-4", "board-box");
             boardBox.id = (i + 1) + "" + (j + 1);
@@ -34,17 +37,20 @@ function createBoard() {
 
 
     }
-    startBottomRow("61 62 63 64 65 66 67");
+    startBottomRow();
 }
 
 createBoard();
 
-function startBottomRow(ids) {
-    var idList = ids.split(" ");
-    for (var i = 0; i < idList.length; i++) {
-        var bottomBlock = document.getElementById(idList[i]);
-        bottomBlock.classList.add("empty");
-}
+
+
+function startBottomRow() {
+    for (i=1; i <= columns; i++) {
+        var bottomBlock = rows.toString() + i.toString();
+        document.getElementById(bottomBlock).classList.add("empty");
+
+    }
+
 }
 
 // Create an event listener that changes the class of the box on click
@@ -86,7 +92,7 @@ boardDOMElement.addEventListener("click", function() {
         if (gameState === false) {
             gameWinner = "Alliance";
         }
-        if (clickerCount === 42) {
+        if (clickerCount === (rows*columns)) {
             gameState = false;
         }
     }
