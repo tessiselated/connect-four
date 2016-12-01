@@ -68,10 +68,6 @@ boardDOMElement.addEventListener("click", function() {
     var imperialCombos = [];
     if ((clickerCount % 2 === 0) && gameState === true) {
         turnStructure("imperial");
-        // event.target.classList.add("imperial", "in-play");
-        // event.target.classList.remove("empty");
-        // clickerCount++;
-        // stackPlay(event.target.id);
         generateOwnedArrays();
         if (imperialIds.length >= winSize) {
             getCombinations(imperialIds, winSize, 0, [], imperialCombos);
@@ -83,10 +79,6 @@ boardDOMElement.addEventListener("click", function() {
 
 
     } else if ((clickerCount % 2 !== 0) && gameState === true) {
-        // event.target.classList.add("alliance", "in-play");
-        // event.target.classList.remove("empty");
-        // clickerCount++;
-        // stackPlay(event.target.id);
         turnStructure("alliance")
         generateOwnedArrays();
         if (allianceIds.length >= winSize) {
@@ -107,12 +99,14 @@ boardDOMElement.addEventListener("click", function() {
 });
 
 function turnStructure(player) {
+    var validPlay;
     var clickedBox = event.target;
     var clickedId = parseInt(event.target.id);
     for (i=1; i <= rows; i++) {
         if (clickedBox.classList.contains("empty")) {
             clickedBox.classList.add(player, "in-play");
             clickedBox.classList.remove("empty");
+            var validPlay = true;
             break;
         }
         else {
@@ -120,8 +114,11 @@ function turnStructure(player) {
             clickedBox = document.getElementById(clickedId)
         }
     }
+    if (validPlay === true) {
     clickerCount++;
     stackPlay(clickedId);
+    validPlay = undefined;
+}
 
 
 }
