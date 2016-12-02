@@ -12,8 +12,12 @@ h1.page-heading {
 }
 
 div.board-container {
-  padding: 40px 0px 40px 50px;
+
   display: inline-block;
+}
+
+div.board-padding {
+  padding: 40px 0px 40px 50px;
 }
 
 div.board-box {
@@ -53,4 +57,18 @@ div.result-area {
   font-size: 2em;
   color: #d8cd00;
   cursor: pointer;
+}
+
+div.alliance-hover {
+  background-image: url(../images/first-order.png);
+  background-size: contain;
+  background-color: rgba(255,255,255,0.6);
+  background-blend-mode: lighten;
+}
+
+div.imperial-hover {
+  background-image: url(../images/imperial-reverse.jpg);
+  background-size: contain;
+  background-color: rgba(255,255,255,0.6);
+  background-blend-mode: lighten;
 }
